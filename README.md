@@ -1,51 +1,116 @@
-# Welcome to your Expo app 👋
+# Previsão do Tempo Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> Aplicativo móvel em React Native (Expo) para buscar e exibir a previsão do tempo de qualquer cidade usando a API do WeatherAPI.com.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Funcionalidades
 
-   ```bash
-   npm install
-   ```
+- **Busca por cidade**: digite o nome de uma cidade e obtenha a previsão atual.
+- **Loading e tratamento de erro**: indicador de carregamento e mensagem de erro caso a requisição falhe.
+- **Cartão de clima**: exibe ícone, temperatura, condição, umidade, vento, sensação térmica, cobertura de nuvens e pressão.
+- **Navegação básica**: expo-router para estrutura de telas (mesmo que hoje seja apenas a Home).
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## 📁 Estrutura do Projeto
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+/<raiz-do-projeto>
+├── components/
+│   └── WeatherCard.tsx        # Componente que renderiza o cartão com dados do clima
+├── app/
+│   └── layout.tsx             # Layout root do expo-router
+│   └── index.tsx              # Tela principal (HomeScreen)
+├── README.md                  # Documentação do projeto
+├── package.json               # Dependências e scripts
+└── tsconfig.json              # Configurações do TypeScript
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **components/WeatherCard.tsx**  
+  Recebe o objeto `data` da API e exibe:
+  - Nome da cidade e região
+  - Ícone do clima
+  - Temperatura em °C
+  - Texto da condição (nublado, ensolarado, etc.)
+  - Informações extras: umidade, vento, sensação térmica, nuvens e pressão.
 
-## Learn more
+- **app/layout.tsx**  
+  Configura o stack de navegação do Expo Router.
 
-To learn more about developing your project with Expo, look at the following resources:
+- **app/index.tsx** (HomeScreen)  
+  - Hooks de estado: `city`, `weather`, `loading`, `error`
+  - `fetchWeather()`: faz `GET` na API WeatherAPI.com via Axios
+  - Renderiza `<ActivityIndicator />` durante o fetch, texto de erro e `<WeatherCard />` com os dados.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 🔧 Tecnologias e Dependências
 
-Join our community of developers creating universal apps.
+- [Expo](https://expo.dev/)  
+- [React Native](https://reactnative.dev/)  
+- [expo-router](https://expo.github.io/router/)  
+- [Axios](https://github.com/axios/axios)  
+- TypeScript
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# Consumindo_APIs_em_react-Clima
+---
+
+## ⚙️ Pré-requisitos
+
+- Node.js (>= 14.x)
+- npm ou Yarn
+- CLI do Expo instalado globalmente:
+  ```bash
+  npm install -g expo-cli
+  ```
+
+---
+
+## 📥 Instalação e Execução
+
+1. **Clone o repositório**  
+   ```bash
+   git clone https://github.com/Isaias3033/Consumindo_APIs_em_react-Clima.git
+   cd Consumindo_APIs_em_react-Clima
+   ```
+
+2. **Instale as dependências**  
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+
+3. **Configurar a chave de API**  
+   - Abra `app/index.tsx` e substitua o valor de `API_KEY` pela sua chave do WeatherAPI.com.
+   - **(Opcional)** para não expor a chave no código, utilize variáveis de ambiente e alguma lib como `react-native-dotenv`.
+
+4. **Inicie o Metro Bundler**  
+   ```bash
+   expo start
+   ```
+
+5. **Execute no dispositivo ou emulador**  
+   - Pressione `i` para iOS Simulator  
+   - Pressione `a` para Android Emulator  
+   - Ou escaneie o QR code com o app Expo Go no seu celular.
+
+---
+
+## 📝 Boas Práticas
+
+- Teste endpoints no Postman ou Insomnia antes de integrar.
+- Centralize chamadas HTTP em um serviço (Ex.: `services/api.ts`).
+- Use hooks personalizados (`useFetch`, `useWeather`) para isolar lógica de busca.
+- Considere usar bibliotecas de gerenciamento de estado de dados (`react-query`, `SWR`) para cache e refetch automático.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a MIT License. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+> Desenvolvido com ❤️ por **Seu Nome**  
+> Para dúvidas ou contribuições, abra uma issue ou pull request neste repositório.
