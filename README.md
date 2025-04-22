@@ -80,37 +80,19 @@
    # ou
    yarn install
    ```
-
-3. **Configurar a chave de API**  
-   - Abra `app/index.tsx` e substitua o valor de `API_KEY` pela sua chave do WeatherAPI.com.
-   - **(Opcional)** para não expor a chave no código, utilize variáveis de ambiente e alguma lib como `react-native-dotenv`.
-
+   
 4. **Inicie o Metro Bundler**  
    ```bash
    expo start
    ```
 
 5. **Execute no dispositivo ou emulador**  
+   - Pressione `w` para Emular Web  
    - Pressione `i` para iOS Simulator  
    - Pressione `a` para Android Emulator  
    - Ou escaneie o QR code com o app Expo Go no seu celular.
 
 ---
 
-## 📝 Boas Práticas
-
-- Teste endpoints no Postman ou Insomnia antes de integrar.
-- Centralize chamadas HTTP em um serviço (Ex.: `services/api.ts`).
-- Use hooks personalizados (`useFetch`, `useWeather`) para isolar lógica de busca.
-- Considere usar bibliotecas de gerenciamento de estado de dados (`react-query`, `SWR`) para cache e refetch automático.
-
----
-
-## 📄 Licença
-
-Este projeto está licenciado sob a MIT License. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-> Desenvolvido com ❤️ por **Seu Nome**  
+> Desenvolvido com ❤️ por **Isaias Santana**  
 > Para dúvidas ou contribuições, abra uma issue ou pull request neste repositório.
